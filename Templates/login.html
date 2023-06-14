@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body style="background-color:#EFFAFC">
+<div class="container ">
+
+    <div class="row">
+        <div class="col-md-7">
+            <img style="width:470px" src="https://forums.launchbox-app.com/uploads/monthly_2017_12/5a2188f5306aa_MovieLOGO.png.8ef762e4e2636572ed445034c9bf21fe.png" alt="image">
+        </div>
+        <div class="col-md-5">
+            <br>
+             <h2>Movie Recommendation System</h2>
+              {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-danger">
+
+                    {% for message in messages %}
+                    <p>{{ message }}</p>
+                    {% endfor %}
+
+            </div>
+            {% endif %}
+            {% endwith %}
+<form class="form-signin" method="POST" action="/login" id="login-form">
+    <br>
+  <label for="username">Username:</label>
+  <input type="text" class="form-control" name="username" id="username">
+    <br>
+    <br>
+  <label for="password">Password:</label>
+  <input type="password"  class="form-control" name="password" id="password" >
+    <br>
+    <br>
+  <input type="submit" value="Login" class="btn btn-primary" onclick="return validateForm()">
+
+</form>
+            <br>
+<a href="/signup"> <h4> Don't have an account? SignUp </h4></a>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+function validateForm() {
+  var username = document.forms["login-form"]["username"].value;
+  var password = document.forms["login-form"]["password"].value;
+
+  if (username == "") {
+    alert("Username must be filled out");
+    return false;
+  }
+
+  if (password == "") {
+    alert("Password must be filled out");
+    return false;
+  }
+}
+</script>
+
+</html>

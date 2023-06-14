@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body style="background-color:#EFFAFC">
+<div class="container ">
+    <div class="row">
+        <div class="col-md-7">
+            <br>
+            <br>
+            <img style="width:470px" src="https://forums.launchbox-app.com/uploads/monthly_2017_12/5a2188f5306aa_MovieLOGO.png.8ef762e4e2636572ed445034c9bf21fe.png" alt="image">
+        </div>
+        <div class="col-md-5">
+            <br>
+             <h2>Book Recommendation System</h2>
+            <br>
+<form class="form-group" method="post" action="/signup" onsubmit="return validateForm()" name="signup-form">
+  <label for="username">Username:</label>
+  <input class="form-control" type="text" name="username" id="username">
+    <br>
+    <br>
+  <label for="email">Email:</label>
+  <input class="form-control" type="email" name="email" id="email">
+    <br>
+    <br>
+  <label for="password">Password:</label>
+  <input class="form-control" type="password" name="password" id="password">
+    <br>
+    <br>
+  <input class="btn btn-primary" type="submit" value="Sign up" >
+</form>
+            <br>
+<a href="/login"> <h4> Already Have an Account? Login</h4> </a>
+            </div>
+        </div>
+    </div>
+</body>
+<script >
+    function validateForm() {
+  var username = document.forms["signup-form"]["username"].value;
+  var email = document.forms["signup-form"]["email"].value;
+  var password = document.forms["signup-form"]["password"].value;
+
+  if (username == "") {
+    alert("Username must be filled out");
+    return false;
+  }
+
+  if (email == "") {
+    alert("Email must be filled out");
+    return false;
+  }
+
+  if (password == "") {
+    alert("Password must be filled out");
+    return false;
+  }
+
+  // check if email format is valid
+  var emailPattern = /^\S+@\S+\.\S+$/;
+  if (!emailPattern.test(email)) {
+    alert("Invalid email format");
+    return false;
+  }
+
+
+  return true;
+}
+
+</script>
+</html>
+

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommendations</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<style>
+    .text-white {
+        color: white
+    }
+</style>
+<body style="background-color:#ECF2FF">
+<nav class="navbar" style="background-color:#1a7991">
+    <a class="navbar-brand" style="color:black">Movie Recommendation System</a>
+    <ul class="nav navbar-nav">
+        <li><a href="/" style="color:black">Home</a></li>
+        <li><a href="recommend.html" style="color:black">Recommend</a></li>
+        {% if username == 'admin' %}
+        <li><a style="color:black" href="admin.html">Dashboard</a></li>
+        {% endif %}
+        <li style="margin-left:400px" ><a href="/signup" style="color:black">SignUp</a></li>
+        <li style="margin-left:40px" ><a href="/login" style="color:black">Logout ({{ username }})</a></li>
+    </ul>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h1 class="text-blue" style="font-size:50px">Recommend Movies</h1>
+            <form action="/recommend_movies" method="post">
+                <input name="movie_title" type="text" class="form-control" placeholder="Enter movie title"><br>
+                <input type="submit" class="btn btn-warning">
+            </form>
+            {% if recommendations %}
+                <h3 style="color:black">Recommended movies for "{{ title }}"</h3>
+                <div class="row">
+                    {% for movie in recommendations %}
+                    <div class="col-md-4">
+                        <p style="color:black;margin-bottom:20px">{{ movie['Title'] }} </p>
+                        <p style="color:black;margin-bottom:20px">Genres: {{ movie['Genres'] }}</p>
+                        <p style="color:black;margin-bottom:20px">Cosine Similarity Score: {{ movie['cosinesimilarity_score'] }}</p>
+                        <p style="color:black;margin-bottom:20px">Cast: {{ movie['Cast'] }}</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+</body>
+</html>
